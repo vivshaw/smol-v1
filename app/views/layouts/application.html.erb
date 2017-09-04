@@ -9,21 +9,22 @@
   </head>
 
   <body>
-    <header class="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
-      <nav class="f6 fw6 ttu tracked">
-        <a class="link dim white dib mr3" href="#" title="Home">Home</a>
-        <a class="link dim white dib mr3" href="#" title="About">About</a>
+    <header class="flex justify-between bg-white fixed w-100 ph3 ph4-m ph5-l">
+      <%= link_to image_tag("smol-logo-yellow.png"), root_path, {class: "flex items-center link dim dib"} %>
+
+      <nav class="flex flex-grow items-center f6 fw6 tracked">
+        <a class="link dim dark-gray dib mr3" href="#" title="About">About</a>
         <% if user_signed_in? %>
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'link dim white dib mr3' %>
+          <%= link_to 'Profile', edit_user_registration_path, :class => 'link dim white dib mr3' %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'link dim white dib'  %>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'link dim white dib mr3'  %>
+          <%= link_to "Sign Up", new_user_registration_path, :class => 'link dim white dib mr3'  %>
           <%= link_to "Login", new_user_session_path, :class => 'link dim white dib'  %>
         <% end %>
       </nav>
     </header>
 
-    <div id='content'>
+    <div id='content' class='pt4'>
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -32,5 +33,5 @@
       <% end %>
       <%= yield %>
     </div>
-  </body>  
+  </body>
 </html>
