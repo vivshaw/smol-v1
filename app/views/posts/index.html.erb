@@ -13,9 +13,9 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to post.title, post_by_user_path(post.user.username, post.id) %></td>
+        <td><%= link_to post.title, post_by_user_path(post.user, post.id) %></td>
         <td><%= post.description %></td>
-        <td><%= post.user.username %></td>
+        <td><%= link_to post.user.username, user_profile_path(post.user) %></td>
       </tr>
     <% end %>
   </tbody>
