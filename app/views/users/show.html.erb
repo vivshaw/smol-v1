@@ -8,6 +8,10 @@
 <% end %>
 </ul>
 
+<h3>Colortheme</h3>
+<%= @user.colortheme %>
+
+
 <% if current_user == @user %>
   <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'link dim dark-gray dib mr3' %>
 <% end %>

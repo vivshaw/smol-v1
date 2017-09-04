@@ -11,6 +11,18 @@ class User < ApplicationRecord
     username
   end
 
+  def get_colortheme
+    colorthemes = {
+      "yellow" => {primary: "gold", lighter: "light-yellow", accent: "yellow"},
+      "red" => {primary: "red", lighter: "light-red", accent: "dark-red"},
+      "blue" => {primary: "blue", lighter: "light-blue", accent: "navy"},
+      "pink" => {primary: "hot-pink", lighter: "light-pink", accent: "dark-pink"},
+      "green" => {primary: "green", lighter: "light-green", accent: "dark-green"}
+    }
+
+    return colorthemes[colortheme]
+  end
+
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

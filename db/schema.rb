@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904013459) do
+ActiveRecord::Schema.define(version: 20170904074615) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170904013459) do
     t.string "provider"
     t.string "uid"
     t.string "username"
+    t.string "colortheme"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
