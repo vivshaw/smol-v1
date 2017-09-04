@@ -15,7 +15,7 @@
       <nav class="flex flex-grow items-center f6 fw6 tracked">
         <a class="link dim dark-gray dib mr3" href="#" title="About">About</a>
         <% if user_signed_in? %>
-          <%= link_to 'Profile', edit_user_registration_path, :class => 'link dim dark-gray dib mr3' %>
+          <%= link_to current_user.username, user_profile_path(current_user), :class => 'link dim dark-gray dib mr3' %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'link dim dark-gray dib'  %>
         <% else %>
           <%= link_to "Sign Up", new_user_registration_path, :class => 'link dim dark-gray dib mr3'  %>
