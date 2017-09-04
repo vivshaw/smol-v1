@@ -9,23 +9,28 @@
   </head>
 
   <body>
-    <p class="navbar-text pull-right">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-    <% end %>
-    </p>
+    <header class="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+      <nav class="f6 fw6 ttu tracked">
+        <a class="link dim white dib mr3" href="#" title="Home">Home</a>
+        <a class="link dim white dib mr3" href="#" title="About">About</a>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'link dim white dib mr3' %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'link dim white dib'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'link dim white dib mr3'  %>
+          <%= link_to "Login", new_user_session_path, :class => 'link dim white dib'  %>
+        <% end %>
+      </nav>
+    </header>
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    <%= yield %>
-  </body>
+    <div id='content'>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>  
 </html>
