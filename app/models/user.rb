@@ -17,7 +17,8 @@ class User < ApplicationRecord
       "red" => {primary: "red", lighter: "light-red", accent: "dark-red"},
       "blue" => {primary: "blue", lighter: "light-blue", accent: "navy"},
       "pink" => {primary: "hot-pink", lighter: "light-pink", accent: "dark-pink"},
-      "green" => {primary: "green", lighter: "light-green", accent: "dark-green"}
+      "green" => {primary: "green", lighter: "light-green", accent: "dark-green"},
+      "grey" => {primary: "silver", lighter: "moon-gray", accent: "mid-gray"}
     }
 
     return colorthemes[colortheme]
