@@ -38,3 +38,16 @@
 .header-img {
 	max-width: 24rem;
 }
+
+.post-mins {
+	min-width: 340px;
+}
+
+.grid {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.gridcell {
+	flex: 1 0 40%;
+}

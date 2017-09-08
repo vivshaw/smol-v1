@@ -1,38 +1,34 @@
 <div class="w-70 center mt4 tiledbg">
   <div class="pa5">
     <div class="bg-navy cf">
-    <div class="fl w-50 white pl3 mb4">
-      <h1 class="fw1 white merriwether measure-narrow title50">From small beginnings come great things.</h1>
-      <p class="f4 fw1 merriwether">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac bibendum eros - Nulla facilisi curabitur.</p>
-      <%= link_to "Sign Up", new_user_registration_path, :class => 'f6 br-pill bg-light-blue no-underline navy ba b--dark-green grow pv2 ph3 dib mr3' %>
-      <a class="f6 br-pill light-blue no-underline ba grow pv2 ph3 dib"
-        href="https://github.com/vivshaw/smol-v1">
-        Learn More
-      </a>
-    </div>
+      <div class="fl w-50 white pl3 mb4">
+        <h1 class="fw1 white merriwether measure-narrow title50">From small beginnings come great things.</h1>
+        <p class="f4 fw1 merriwether">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac bibendum eros - Nulla facilisi curabitur.</p>
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'f6 br-pill bg-light-blue no-underline navy ba b--dark-green grow pv2 ph3 dib mr3' %>
+        <a class="f6 br-pill light-blue no-underline ba grow pv2 ph3 dib"
+          href="https://github.com/vivshaw/smol-v1">
+          Learn More
+        </a>
+      </div>
 
-    <div class="fl w-50">
-      <%= image_tag("hand.png", class: "header-img") %>
+      <div class="fl w-50">
+        <%= image_tag("hand.png", class: "header-img") %>
+      </div>
     </div>
-  </div>
   </div>
 </div>
 
-
-
 <div class="w-80 center">
   <div class="w-100 bb b--silver mh2 mb2 cf">
-    <h1 class="helvetica fw4 dark-gray mb0 pr2 bb fl">Recent Posts</h1>
+    <h1 class="helvetica fw4 navy mb0 pr2 bb b--navy fl">Recent Posts</h1>
   </div>
-  <div class="cf">
-  <!-- Column 1 -->
-  <div class="fl w-50">
 
+  <div class="grid">
     <% @posts.each do |post| %>
       <% colortheme = post.user.get_colortheme %>
 
       <!-- Post title / left box -->
-      <article class="cf br2 ba dark-gray b--black-10 mh2 mb2 post-width" style="height: 300px;">
+      <article class="cf br2 ba dark-gray b--black-10 mh2 mb2 gridcell post-mins" style="height: 300px;">
         <div class="fl w-40 bg-<%= colortheme[:primary] %>" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
           <h3 class="tc pv3 f2 measure-narrow lh-title mv0">
             <span class="bg-black-90 lh-copy white pa1 tracked-tight">
@@ -82,44 +78,5 @@
       </article>
       <!-- end post -->
     <% end %>
-
   </div>
-
-  <!-- Column 2 -->
-  <div class="fl w-50">
-    <% @posts.each do |post| %>
-      <% colortheme = post.user.get_colortheme %>
-
-      <!-- Post title / left box -->
-      <article class="cf br2 ba dark-gray b--black-10 mh2 mb2" style="height: 300px;">
-        <div class="fl w-40 bg-<%= colortheme[:primary] %>" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
-          <h3 class="tc pv3 f2 measure-narrow lh-title mv0">
-            <span class="bg-black-90 lh-copy white pa1 tracked-tight">
-              <%= link_to post.title, post_by_user_path(post.user, post.id), class: 'white link' %>
-            </span>
-          </h3>
-        </div>
-
-        <!-- post body -->
-        <div class="fl w-60 pa2 ph3-ns pb3-ns">
-          <div class="dt w-100 mt1">
-            <div class="dtc">
-              <p class="f5 f4-l lh-copy">
-                <%= post.description %>
-              </p>
-            </div>
-          </div>
-          <p class="f6 lh-copy measure mt2 mid-gray">
-            If it fits, i sits burrow under covers. Destroy couch leave hair everywhere,
-            and touch water with paw then recoil in horror.
-          </p>
-          <%= link_to 'Read more', post_by_user_path(post.user, post.id) %>
-          <p class="f6 lh-copy gray mv0">By <span class="ttu"><%= link_to post.user.username, user_profile_path(post.user) %></span></p>
-          <time class="f6 db gray"><%= post.created_at %></time>
-        </div>
-      </article>
-      <!-- end post -->
-    <% end %>
-  </div>
-</div>
 </div>
