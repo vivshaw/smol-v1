@@ -43,11 +43,27 @@
 	min-width: 340px;
 }
 
+.post-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 182px;
+	min-height: 140px;
+}
+
 .grid {
 	display: flex;
 	flex-flow: row wrap;
 }
 
-.gridcell {
+.cell50 {
+	flex: 1 0 48%;
+}
+
+.cell40 {
 	flex: 1 0 40%;
+}
+
+.cell60 {
+	flex: 1 0 60%;
 }

@@ -28,8 +28,8 @@
       <% colortheme = post.user.get_colortheme %>
 
       <!-- Post title / left box -->
-      <article class="cf br2 ba dark-gray b--black-10 mh2 mb2 gridcell post-mins" style="height: 300px;">
-        <div class="fl w-40 bg-<%= colortheme[:primary] %>" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <article class="grid br2 ba dark-gray b--black-10 mh2 mb2 cell50 post-mins">
+        <div class="cell40 post-title w-40 bg-<%= colortheme[:primary] %>">
           <h3 class="tc pv3 f2 measure-narrow lh-title mv0">
             <span class="bg-black-90 lh-copy white pa1 tracked-tight">
               <%= link_to post.title, post_by_user_path(post.user, post.id), class: 'white link' %>
@@ -38,7 +38,7 @@
         </div>
 
         <!-- post body -->
-        <div class="fl w-60 pa2 ph3-ns pb3-ns">
+        <div class="cell60 w-60 pa2 ph3-ns pb3-ns">
 
           <!-- Subtitle -->
           <h4 class="f3 fw1 merriwether i mt3 mb3">
