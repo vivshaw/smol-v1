@@ -1,16 +1,40 @@
-<h2><%= @user.username %></h2>
+<% theme= @user.get_colortheme %>
 
-<ul>
+<header class="sans-serif tiledbg">
+  <div class="cf mw9 center pa4 pt5-ns mh7-l bg-white bb b--<%= theme[:primary] %>">
+    <!-- User info -->
+    <div class="fl w-50 pa0 ma0">
+      <time class="f6 mb2 dib ttu tracked">
+        <small>
+          joined on <%= @user.created_at.strftime('%F') %>
+          | last post goes here
+        </small>
+      </time>
+      <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
+        <span class="lh-copy pa1 tracked-tight mr0 black-90">
+          <%= @user.username %><span class="<%= theme[:primary] %>">.</span>
+        </span>
+      </h3>
+      <h4 class="f3 fw1 georgia i">User description goes here.</h4>
+
+      <!-- Separator -->
+      <div class="w2 bb mt0 mb3 pv0 b--<%= theme[:accent] %>"></div>
+        <% if @user == current_user %>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: 'f6 br-pill white no-underline ba grow pv2 ph3 dib bg-' + theme[:primary] %>
+        <% else %>
+          <%= link_to 'Follow', edit_user_registration_path, class: 'f6 br-pill white no-underline ba grow pv2 ph3 dib bg-' + theme[:primary] %>
+        <% end %>
+      </div>
+
+    <!-- Avatar -->
+    <div class="fl w-50">
+      <img src="/assets/bird-avatar.jpg" class="center mt4 pa1 br-100 ba b--<%= theme[:accent] %> h4 w4" alt="avatar">
+    </div>
+  </div>
+</header>
+
+<div class="grid pa4 pt5-ns ph7-l center">
 <% @user.posts.each do |post| %>
-  <li>
-    <%= link_to post.title, post_by_user_path(post.user.username, post.id) %>
-  </li>
+  <%= render partial: "shared/post", locals: {post: post, fullwidth: true} %>
 <% end %>
-</ul>
-
-<h3>Colortheme</h3>
-<%= @user.colortheme %>
-
-<% if current_user == @user %>
-  <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'link dim dark-gray dib mr3' %>
-<% end %>
+</div>
