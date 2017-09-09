@@ -1,7 +1,17 @@
+<!--
+  Post template partial.
+  Requires 2 locals:
+    post        = the post to render
+    fullwidth   = boolean, whether it's fullwidth or displayed on a 2-wide grid
+-->
+
+
 <% colortheme = post.user.get_colortheme %>
 
+<% cellwidth = fullwidth ? "cell100" : "cell50" %>
+
 <!-- Post title / left box -->
-<article class="grid br2 ba dark-gray b--black-10 mh2 mb2 cell50 post-mins">
+<article class="<%= cellwidth %> grid br2 ba dark-gray b--black-10 mh2 mb2 post-mins">
   <div class="cell40 post-title w-40 bg-<%= colortheme[:primary] %>">
     <h3 class="tc pv3 f2 measure-narrow lh-title mv0">
       <span class="bg-black-90 lh-copy white pa1 tracked-tight">
