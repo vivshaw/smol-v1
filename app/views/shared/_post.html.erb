@@ -1,0 +1,52 @@
+<% colortheme = post.user.get_colortheme %>
+
+<!-- Post title / left box -->
+<article class="grid br2 ba dark-gray b--black-10 mh2 mb2 cell50 post-mins">
+  <div class="cell40 post-title w-40 bg-<%= colortheme[:primary] %>">
+    <h3 class="tc pv3 f2 measure-narrow lh-title mv0">
+      <span class="bg-black-90 lh-copy white pa1 tracked-tight">
+        <%= link_to post.title, post_by_user_path(post.user, post.id), class: 'white link' %>
+      </span>
+    </h3>
+  </div>
+
+  <!-- post body -->
+  <div class="cell60 w-60 pa2 ph3-ns pb3-ns">
+
+    <!-- Subtitle -->
+    <h4 class="f3 fw1 merriwether i mt3 mb3">
+      <%= post.description %>
+    </h4>
+
+    <!-- Separator mark -->
+    <div class="w2 bb mv0 pv0 b--<%= colortheme[:accent] %>"></div>
+
+    <!-- Post summary -->
+    <div class="mb3">
+      <p class="f5 lh-copy measure merriwether fw1 mb2">
+        Pellentesque non tincidunt nunc. Nulla pulvinar sapien ut felis vehicula pretium. Donec blandit nibh quis tempus consequat.
+      </p>
+      <%= link_to 'Read more', post_by_user_path(post.user, post.id), class: "link mb2" %>
+    </div>
+
+    <!-- Bottom matter -->
+    <div class="cf w-100 mt0">
+      <!-- Avatar will go here -->
+      <div class="fl w-20">
+        <img src="/assets/bird-avatar.jpg" class="br-100 pa1 ba b--<%= colortheme[:accent] %> h2 w2" alt="avatar">
+      </div>
+
+      <!-- Username, created_at, etc -->
+      <div class="fl w-70">
+        <p class="f6 lh-copy gray mv0">By <span class="ttu"><%= link_to post.user.username, user_profile_path(post.user), class: "link hover-blue" %></span></p>
+        <time class="f6 db gray"><%= post.created_at.strftime('%F') %></time>
+      </div>
+
+      <!-- Like button will go here -->
+      <div class="fl w-10">
+        <i class="fa fa-heart-o mv2 hover-<%= colortheme[:accent] %>" aria-hidden="true"></i>
+      </div>
+    <div>
+  </div>
+</article>
+<!-- end post -->
