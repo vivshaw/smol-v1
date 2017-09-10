@@ -17,17 +17,13 @@
           <%= @post.title %>
         </span>
       </h3>
-      <h4 class="f3 fw1 georgia i">subtitle</h4>
+      <h4 class="f3 fw1 georgia i"><%= @post.description %></h4>
       <h5 class="f6 ttu tracked black-80">By <%= link_to @post.user.username, user_profile_path(@post.user.username), class: 'link black-80' %></h5>
     </div>
   </header>
 
   <!-- Post body -->
   <div class="pa4 ph7-l georgia mw9-l center">
-    <p class="f5 f3-ns lh-copy measure georgia">
-      <%= @post.description %>
-    </p>
-    <p><%= params[:action] %></p>
     <p class="f5 f3-ns lh-copy measure georgia">
       In 1958 he published a piece in Venture proclaiming what he called "Sturgeon's Revelation"
     </p>
