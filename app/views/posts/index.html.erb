@@ -18,14 +18,14 @@
   </div>
 </div>
 
-<div class="w-80 center">
-  <div class="w-100 bb b--silver mh2 mb2 cf">
+<div class="w-100 w-80-ns center pa2 pa0-ns">
+  <div class="w-100 bb b--silver mb2 cf">
     <h1 class="helvetica fw4 navy mb0 pr2 bb b--navy fl">Recent Posts</h1>
   </div>
 
   <div class="grid">
     <% @posts.each do |post| %>
-      <%= render partial: "shared/post", object: post %>
+      <%= render partial: "shared/post", locals: {post: post, fullwidth: false} %>
     <% end %>
   </div>
 </div>

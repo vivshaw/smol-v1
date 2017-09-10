@@ -40,14 +40,14 @@
 }
 
 .post-mins {
-	min-width: 340px;
+	min-width: 330px;
 }
 
 .post-title {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	min-width: 182px;
+	min-width: 185px;
 	min-height: 140px;
 }
 
