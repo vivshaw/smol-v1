@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   # Show user profile
   get '@:username' => 'users#show', as: :user_profile
 
+  # Get a post
   get '@:username/:id' => 'posts#show', as: :post_by_user
+
+  # Fave and unfave
+  match 'fave', to: 'faves#fave', via: :post
+  match 'unfave', to: 'faves#unfave', via: :delete
 
   # Homepage
   root 'posts#index'

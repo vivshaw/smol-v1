@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
+  has_many :faves, dependent: :destroy
   has_many :faved_posts, through: :faves, source: :posts
 
   def to_param
@@ -25,8 +26,24 @@ class User < ApplicationRecord
     return colorthemes[colortheme]
   end
 
+  # creates a new Fave with this user & the given post's id
+  def fave!(post)
+    self.faves.create!(post_id: post.id)
+  end
+
+  # destroys a Fave belonging to this user with the given post's id
+  def unfave!(post)
+    fave = self.faves.find_by_post_id(post.id)
+    fave.destroy!
+  end
+
+  # Returns boolean whether post is faved by this user
+  def fave?(post)
+    self.faves.find_by_post_id(post.id)
+  end
+
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end

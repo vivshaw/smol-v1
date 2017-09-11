@@ -1,0 +1,10 @@
+<% if current_user %>
+  <% if current_user.fave?(post) %>
+    <%= button_to "Unfave", unfave_path(post_id: post.id), remote: true, method: :delete %>
+  <% else %>
+    <%= button_to "Fave", fave_path(post_id: post.id), remote: true %>
+  <% end %>
+
+<% else %>
+  <i class="fa fa-heart-o mv2 hover-<%= colortheme[:accent] %>" aria-hidden="true"></i>
+<% end %>
