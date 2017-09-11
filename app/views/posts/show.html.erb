@@ -49,29 +49,7 @@
     <h1 class="helvetica fw4 mb2 pr2 bb <%= colortheme[:accent] %> b--<%= colortheme[:accent] %>">Comments</h1>
 
     <% @post.comments.each do |comment| %>
-      <% comment_theme = comment.user.get_colortheme %>
-
-      <div class="br2 ba dark-gray b--black-10 mb4">
-        <div class="cf w-100 mt3 ml3">
-          <!-- Avatar -->
-          <div class="fl mr3">
-            <img src="/assets/bird-avatar.jpg" class="br-100 pa1 ba b--<%= comment_theme[:accent] %> h2 w2" alt="avatar">
-          </div>
-
-          <!-- Username, created_at, etc -->
-          <div class="fl">
-            <p class="f6 lh-copy gray mv0"><%= link_to comment.user.username, user_profile_path(comment.user), class: "link hover-blue " + comment_theme[:accent] %></p>
-            <time class="f6 db gray"><%= comment.created_at.strftime('%F') %></time>
-          </div>
-        </div>
-
-        <!-- Comment body -->
-        <div class="ml3 mb3">
-          <p class="f4 lh-copy measure merriwether fw1 mb2">
-            <%= comment.body %>
-          </p>
-        </div>
-      </div>
+      <%= render partial: "shared/comment", locals: { comment: comment } %>
     <% end %>
 
   </div>

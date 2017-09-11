@@ -1,0 +1,23 @@
+<% theme = comment.user.get_colortheme %>
+
+<div class="br2 ba dark-gray b--black-10 mb4">
+  <div class="cf w-100 mt3 ml3">
+    <!-- Avatar -->
+    <div class="fl mr3">
+      <img src="/assets/bird-avatar.jpg" class="br-100 pa1 ba b--<%= theme[:accent] %> h2 w2" alt="avatar">
+    </div>
+
+    <!-- Username, created_at, etc -->
+    <div class="fl">
+      <p class="f6 lh-copy gray mv0"><%= link_to comment.user.username, user_profile_path(comment.user), class: "link hover-blue " + theme[:accent] %></p>
+      <time class="f6 db gray"><%= comment.created_at.strftime('%F') %></time>
+    </div>
+  </div>
+
+  <!-- Comment body -->
+  <div class="ml3 mb3">
+    <p class="f4 lh-copy measure merriwether fw1 mb2">
+      <%= comment.body %>
+    </p>
+  </div>
+</div>
