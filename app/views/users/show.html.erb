@@ -28,11 +28,13 @@
     <!-- Avatar -->
     <div class="fl w-50">
       <img src="/assets/bird-avatar.jpg" class="ml5-ns ml2-s mt4 pa1 br-100 ba b--<%= theme[:accent] %> h4 w4" alt="avatar">
+      <p class="ml5-ns ml2-s mb1 f6 mb2 ttu tracked">Posts: <%= @user.posts.length %></p>
+      <p class="ml5-ns ml2-s mt1 f6 mb2 ttu tracked">Comments: <%= @user.comments.length %></p>
     </div>
   </div>
 </header>
 
-<div class="grid pa1 pa4-ns pt5-ns ph7-l center">
+<div class="grid pa1 pa4-ns pt3 pt5-ns ph7-l center">
 <% @user.posts.each do |post| %>
   <%= render partial: "shared/post", locals: {post: post, fullwidth: true} %>
 <% end %>
