@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :faves, dependent: :destroy
   has_many :faved_posts, through: :faves, source: :posts
+  has_many :comments, dependent: :destroy
 
   def to_param
     username

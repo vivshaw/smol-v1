@@ -43,7 +43,14 @@
   </div>
 </article>
 
-<% if user_signed_in? %>
-  <%= link_to 'Edit', edit_post_path(@post) %> |
+<% @post.comments.each do |comment| %>
+  <h3><%= comment.user.username %></h3>
+  <p><%= comment.body %></p>
 <% end %>
-<%= link_to 'Back', posts_path %>
+
+<% if current_user %>
+  <%= form_for [@post, Comment.new] do |f| %>
+    <%= f.text_area :body, placeholder: "Add a comment" %>
+    <%= f.submit "Add comment" %>
+  <% end %>
+<% end %>
