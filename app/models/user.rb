@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
+  has_many :faved_posts, through: :faves, source: :posts
 
   def to_param
     username
