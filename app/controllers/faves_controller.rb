@@ -10,6 +10,7 @@ class FavesController < ApplicationController
   def unfave
     @user = current_user
     @fave = @user.faves.find_by_post_id(params[:post_id])
+    @post = Post.find(params[:post_id])
     @fave.destroy!
   end
 

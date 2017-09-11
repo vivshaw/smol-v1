@@ -71,3 +71,9 @@
 .cell100 {
 	flex: 1 0 100%;
 }
+
+.fave {
+	background: none;
+	border: none;
+	padding: 0px 0px 0px 0px;
+}

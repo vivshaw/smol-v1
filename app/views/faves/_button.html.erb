@@ -1,10 +1,15 @@
 <% if current_user %>
   <% if current_user.fave?(post) %>
-    <%= button_to "Unfave", unfave_path(post_id: post.id), remote: true, method: :delete %>
+    <%= button_to unfave_path(post_id: post.id), remote: true, method: :delete, class: "fave" do %>
+      <span class="dark-gray"><%= post.faves.length %></span>
+      <i class="fa fa-heart-o mv2 <%= theme[:accent] %>" aria-hidden="true"></i>
+    <% end %>
   <% else %>
-    <%= button_to "Fave", fave_path(post_id: post.id), remote: true %>
+    <%= button_to fave_path(post_id: post.id), remote: true, class: "fave" do %>
+      <span class="dark-gray"><%= post.faves.length %></span>
+      <i class="fa fa-heart-o mv2 dark-gray hover-<%= theme[:accent] %>" aria-hidden="true"></i>
+    <% end %>
   <% end %>
-
 <% else %>
-  <i class="fa fa-heart-o mv2 hover-<%= colortheme[:accent] %>" aria-hidden="true"></i>
+  <i class="fa fa-heart-o mv2 hover-<%= theme[:accent] %>" aria-hidden="true"></i>
 <% end %>

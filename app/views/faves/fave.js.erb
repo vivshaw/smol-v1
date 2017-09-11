@@ -1,0 +1,6 @@
+var post = document.getElementById("<%= @post.id.to_s %>");
+var contentBlock = post.childNodes[7];
+var bottomMatter = contentBlock.childNodes[15]
+var buttonContainer = bottomMatter.childNodes[11]
+
+buttonContainer.innerHTML = '<%= j render partial: "button", locals: { post: @post, theme: @post.user.get_colortheme} %>';
