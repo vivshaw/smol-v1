@@ -7,8 +7,12 @@
         <small>
           <%= @post.created_at %>
           <% if @post.user == current_user %>
-           | <%= link_to 'Edit', edit_post_path(@post), class: 'link black' %>
-           | <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link black' %>
+           |  <%= link_to edit_post_path(@post), class: 'link black hover-' + colortheme[:lighter] do %>
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+              <% end %>
+           |  <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link black hover-' + colortheme[:lighter] do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+              <% end %>
           <% end %>
         </small>
    </time>
