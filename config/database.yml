@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: smol_production
-  username: smol
-  password: <%= ENV['PAILS_OF_RAILS_DATABASE_PASSWORD'] %>
+  pool: 5
+  timeout: 5000
