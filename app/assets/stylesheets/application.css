@@ -14,11 +14,12 @@
  *= require_self
  *= require tachyons
  *= require font-awesome
+ *= require rails_bootstrap_forms
  */
 
 .tiledbg {
 	background-color: #ffffff;
-	background-image: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png");
+	background-image: url('https://www.transparenttextures.com/patterns/diagonal-striped-brick.png');
 	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }

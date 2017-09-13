@@ -52,6 +52,7 @@ gem 'figaro'
 # Styles
 gem 'tachyons-rails'
 gem "font-awesome-rails"
+gem "bootstrap_form"
 
 gem "jquery-rails"
 
