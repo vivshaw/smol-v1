@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170911050956) do
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"
@@ -22,19 +22,19 @@ ActiveRecord::Schema.define(version: 20170911050956) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "faves", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+  create_table "faves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_faves_on_post_id"
     t.index ["user_id"], name: "index_faves_on_user_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "fulltext"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170911050956) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -67,4 +67,9 @@ ActiveRecord::Schema.define(version: 20170911050956) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "faves", "posts"
+  add_foreign_key "faves", "users"
+  add_foreign_key "posts", "users"
 end

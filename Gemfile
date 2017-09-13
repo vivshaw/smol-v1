@@ -11,12 +11,13 @@ gem 'rails', '~> 5.1.3'
 
 # Use sqlite3 as the test/dev database for Active Record
 group :development, :test do
-  gem 'sqlite3'
+  gem 'mysql2'
 end
 # Use postgres in prod
 group :production do
   gem 'pg'
 end
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
