@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :faves, dependent: :destroy
   has_many :faved_posts, through: :faves, source: :posts
   has_many :comments, dependent: :destroy

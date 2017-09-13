@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   has_many :favers, through: :faves, source: :users
   has_many :comments, dependent: :destroy
 
+  validates :title, presence: true
+  validates :description, presence: true
+
   def self.top3
     return Post.left_joins(:faves)
         .group(:id)
