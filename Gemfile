@@ -54,7 +54,12 @@ gem 'tachyons-rails'
 gem "font-awesome-rails"
 gem "bootstrap_form"
 
+# JS
 gem "jquery-rails"
+
+# Markdown
+gem "redcarpet"
+gem "coderay"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
