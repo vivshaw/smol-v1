@@ -1,9 +1,16 @@
 class User < ApplicationRecord
+
+  colorthemes = ["yellow", "red", "blue", "pink", "green", "grey"]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
+
+  validates :username, presence: true, uniqueness: true
+  validates :description, presence: true
+  validates :colortheme, presence: true, inclusion: { in: colorthemes }
 
   has_many :posts, dependent: :destroy
   has_many :faves, dependent: :destroy
