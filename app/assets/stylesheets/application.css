@@ -15,6 +15,7 @@
  *= require tachyons
  *= require font-awesome
  *= require rails_bootstrap_forms
+ *= require vendor/bootstrap-forms.css
  */
 
 .tiledbg {
