@@ -45,6 +45,10 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      split = auth.info.email.split('@')
+      name = split.first
+      hash = Digest::SHA256.hexdigest split.last
+      user.username = name + '-' + hash[0..4]
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
