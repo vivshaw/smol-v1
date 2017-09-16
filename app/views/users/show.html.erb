@@ -20,8 +20,11 @@
       <div class="w2 bb mt0 mb3 pv0 b--<%= theme[:accent] %>"></div>
         <% if @user == current_user %>
           <%= link_to 'Edit Profile', edit_user_registration_path, class: 'f6 br-pill white no-underline ba grow pv2 ph3 dib bg-' + theme[:primary] %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'f6 br-pill black no-underline ba grow bb b--black pv2 ph3 dib'  %>
         <% else %>
+          <!-- Follow function not yet implemented
           <%= link_to 'Follow', edit_user_registration_path, class: 'f6 br-pill white no-underline ba grow pv2 ph3 dib bg-' + theme[:primary] %>
+          -->
         <% end %>
       </div>
 
@@ -35,7 +38,52 @@
 </header>
 
 <div class="grid pa1 pa4-ns pt3 pt5-ns ph7-l center">
-<% @user.posts.each do |post| %>
-  <%= render partial: "shared/post", locals: {post: post, fullwidth: true} %>
-<% end %>
+  <div id="controls" class="cf w-100 bb b--silver mb3">
+    <a id="posts-button" href="#"><h1 class="helvetica fw4 mb0 pr2 fl mr3 hover-blue blue bb b--navy">Posts</h1></a>
+    <a id="comments-button" href="#"><h1 class="ml0 helvetica fw4 mb0 pr2 fl hover-blue navy mr2">Comments</h1></a>
+  </div>
+
+  <div id="posts">
+    <% @user.posts.each do |post| %>
+      <%= render partial: "shared/post", locals: {post: post, fullwidth: true} %>
+    <% end %>
+  </div>
+
+  <div id="comments" class="hidden w-100">
+    <% @user.comments.each do |comment| %>
+      <%= render partial: "shared/comment", locals: { comment: comment } %>
+    <% end %>
+  </div>
 </div>
+
+<script>
+$(document).ready(function() {
+	$('#posts-button').click(function() {
+		event.preventDefault();
+
+		// Show only the selected section
+		$('#comments').addClass('hidden');
+		$('#posts').removeClass('hidden');
+
+		// Highlight selected button
+		$('#comments-button h1').addClass('navy');
+		$('#comments-button h1').removeClass('blue bb b--navy');
+		$('#posts-button h1').addClass('blue bb b--navy');
+		$('#posts-button h1').removeClass('navy');
+	});
+
+	$('#comments-button').click(function() {
+		event.preventDefault();
+
+		// Show only the selected section
+    $('#posts').addClass('hidden');
+		$('#comments').removeClass('hidden');
+
+		// Highlight selected button
+		$('#posts-button h1').addClass('navy');
+		$('#posts-button h1').removeClass('blue bb b--navy');
+		$('#comments-button h1').addClass('blue bb b--navy');
+		$('#comments-button h1').removeClass('navy');
+	});
+});
+</script>
