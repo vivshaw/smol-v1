@@ -7,6 +7,7 @@
 
 <% colortheme = post.user.get_colortheme %>
 <% cellwidth = fullwidth ? "cell100" : "cell50" %>
+<% excerpt = strip_markdown(post.fulltext) %>
 
 <article class="<%= cellwidth %> grid br2 ba dark-gray b--black-10 mr2-ns mb2 post-mins" id="<%= post.id.to_s %>">
   <!-- Post title / left box -->
@@ -32,7 +33,7 @@
     <!-- Post summary -->
     <div class="mb3">
       <p class="f5 lh-copy measure merriwether fw1 mb2">
-        Pellentesque non tincidunt nunc. Nulla pulvinar sapien ut felis vehicula pretium. Donec blandit nibh quis tempus consequat.
+        <%= truncate(excerpt, length: 150) %>
       </p>
       <%= link_to 'Read more', post_by_user_path(post.user, post.id), class: "link mb2" %>
     </div>
