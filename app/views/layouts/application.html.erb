@@ -27,10 +27,8 @@
         <% if user_signed_in? %>
           <%= link_to 'New Post', new_post_path, :class => "link dim dib mr3 blue hover-light-blue" %>
           <%= link_to current_user.username, user_profile_path(current_user), :class => 'link dim dark-gray dib mr3 blue hover-light-blue' %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'link dim dark-gray dib blue hover-light-blue'  %>
         <% else %>
-          <%= link_to "Sign Up", new_user_registration_path, :class => 'link dim dib mr3 blue hover-light-blue'  %>
-          <%= link_to "Login", new_user_session_path, :class => 'link dim dib blue hover-light-blue'  %>
+          <%= link_to "Sign In", new_user_session_path, :class => 'link dim dib blue hover-light-blue'  %>
         <% end %>
       </nav>
     </header>
