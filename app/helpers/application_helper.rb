@@ -1,3 +1,5 @@
+require 'redcarpet/render_strip'
+
 module ApplicationHelper
 
   class CodeRayify < Redcarpet::Render::HTML
@@ -19,6 +21,11 @@ module ApplicationHelper
     markdowner = Redcarpet::Markdown.new(coderayified, options)
 
     return markdowner.render(text).html_safe
+  end
+
+  def strip_markdown(text)
+    stripdown = Redcarpet::Markdown.new(Redcarpet::Render::StripDown, :space_after_headers => true)
+    return stripdown.render(text)
   end
 
 end
